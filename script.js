@@ -47,6 +47,11 @@ const GameController = (function () {
         return `${current.name}'s turn`;
     };
 
+    const setNames = (name1, name2) => {
+        players[0].name = name1 || "Player 1";
+        players[1].name = name2 || "Player 2";
+    };
+
     const getCurrent = () => current;
 
     const restart = () => {
@@ -55,7 +60,7 @@ const GameController = (function () {
         gameOver = false;
     };
 
-    return { playRound, getCurrent, restart };
+    return { playRound, getCurrent, restart, setNames };
 })();
 
 const DisplayController = (function () {
@@ -78,6 +83,15 @@ const DisplayController = (function () {
         const index = e.target.dataset.index;
         if (index === undefined) return;
         updateScreen(GameController.playRound(Number(index)));
+    });
+
+    document.querySelector("#start").addEventListener("click", () => {
+        GameController.setNames(
+            document.querySelector("#p1").value,
+            document.querySelector("#p2").value
+        );
+        GameController.restart();
+        updateScreen();
     });
 
     updateScreen();

@@ -16,3 +16,16 @@ body {
     font-size: 2.5rem;
     cursor: pointer;
 }
+
+.setup {
+    margin-bottom: 15px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.turn {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
